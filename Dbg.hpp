@@ -26,7 +26,6 @@
 namespace Slib::Dbg {
 
 
-
 }
 
 #if defined(SLIB_DBG_IMPL)
