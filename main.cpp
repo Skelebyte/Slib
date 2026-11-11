@@ -20,10 +20,32 @@
  * . This notice may not be removed or altered from any source distribution.
  */
 
+#include <iostream>
+
+#define SLIB_DEF_IMPL
+#include "Def.hpp"
+
+#define SLIB_TYPES_IMPL
+#include "Types.hpp"
+
+#define SLIB_IMG_IMPL
+#define SLIB_IMG_STBI_INCL "Dep/stb_image.h"
+#include "Img.hpp"
+
+#define SLIB_GFX_IMPL
+#define SLIB_GFX_GLAD_INCL "Dep/glad.hpp"
 #include "Gfx.hpp"
 
+#define SLIB_UTIL_IMPL
+#include "Util.hpp"
+
+using namespace Slib::Gfx;
+using namespace Slib::Util;
+using namespace Slib::Types;
+using namespace Slib::Def;
+using namespace Slib::Img;
+
 int main() {
-  std::cout<<"hi mum!"<<std::endl; 
-  
- 
+
+
 }
