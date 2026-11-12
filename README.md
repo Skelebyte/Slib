@@ -2,28 +2,28 @@ Started 8/11/2026
 
 # Slib
 
-A collection of useful (maybe) headers.
+A collection of useful (maybe) functions and types
 
-## Sgfx (Gfx.hpp)
+## Dbg
 
-Graphics with OpenGL VIA glad (requires glad headers).
+Debug functions
 
-# Sdbg (Dbg.hpp)
+# Def
 
-Debug tools.
+Aliases
 
-# Sutil (Util.hpp)
+# Gfx
 
-Utility functions, including file IO.
+OpenGL rendering via glad
 
-# Simg (Img.hpp) 
+# Img
 
-Wrapper for stb_image
+Image loading via stb_image
 
-# Stypes (Types.hpp)
+# Types
 
-Collection of structs used throughout Slib
+Useful structs from colors to math types
 
-# Sdef (Def.hpp)
+# Util
 
-Common alias for different integer types and extras.
+Utilities, including file IO.
