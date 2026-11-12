@@ -20,29 +20,10 @@
  * . This notice may not be removed or altered from any source distribution.
  */
 
-#ifndef SLIB_GFX_HPP
-#define SLIB_GFX_HPP
+#include "../inc/Def.hpp"
 
-#if defined(SLIB_GFX_GLAD_INCL)
-  #include SLIB_GFX_GLAD_INCL
-#else
-  #error ("Must define SLIB_GFX_GLAD_INCL with a valid include path for glad. Example: #define SLIB_GFX_GLAD_INCL \"path/to/glad/glad.h\"")
-#endif
+namespace Slib::Def {
 
-#include "Def.hpp"
 
-namespace Slib::Gfx {
 
 }
-
-#if defined(SLIB_GFX_IMPL)
-
-namespace Slib::Gfx {
-
-
-
-} // namespace Slib::Gfx
-
-#endif
-
-#endif //SLIB_GFX_HPP

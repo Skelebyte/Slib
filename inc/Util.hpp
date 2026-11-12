@@ -20,22 +20,37 @@
  * . This notice may not be removed or altered from any source distribution.
  */
 
-#ifndef SLIB_DBG_HPP
-#define SLIB_DBG_HPP
+#ifndef SLIB_UTIL_HPP
+#define SLIB_UTIL_HPP
 
-namespace Slib::Dbg {
+#include "Def.hpp"
 
+namespace Slib::Util {
+
+  template <typename T>
+  inline Def::String ToString(const T &t) {
+    return std::to_string(t);
+  }
+
+  Def::Uint8 FloatToColorUint8(Def::Float a);
+
+  struct IToString {
+    virtual Def::String ToString() const = 0;
+  };
+
+  struct File {
+    enum {
+      APPEND = -1,
+      APPEND_NL = -2,
+      OVERWRITE = 1
+    };
+
+    static Def::String Read(const Def::StringView p);
+    static void Write(const Def::StringView p, const Def::StringView c, Def::Int b = APPEND_NL);
+    static Def::Bool Exists(const Def::StringView p);
+    static Def::String GetExtension(const Def::StringView p);
+  };
 
 }
 
-#if defined(SLIB_DBG_IMPL)
-
-namespace Slib::Dbg {
-
-
-
-} // namespace Slib::Dbg
-
-#endif
-
-#endif //SLIB_DBG_HPP
+#endif //SLIB_UTIL_HPP
