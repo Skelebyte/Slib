@@ -23,8 +23,28 @@
 #ifndef SLIB_DBG_HPP
 #define SLIB_DBG_HPP
 
+#include "Def.hpp"
+
+#if !defined(SLIB_DBG_FILE)
+#define SLIB_DBG_FILE ".slib.log"
+#endif
+
 namespace Slib::Dbg {
 
+
+
+  struct Debug {
+    static void Log(const Def::String &m, Def::Bool p = true, Def::Bool w = true);
+    static void Warning(const Def::String &m, Def::Bool p = true, Def::Bool w = true);
+    static void Error(const Def::String &m, Def::Bool p = true, Def::Bool w = true);
+    static void Fatal(const Def::String &m, Def::Int c = -1, Def::Bool p = true, Def::Bool w = true);
+    static void Exit(Def::Int c = -1, Def::Bool p = true, Def::Bool w = true);
+    static void CheckGL(const Def::String &m = "", Def::Bool p = true, Def::Bool w = true);
+
+    protected:
+      static void Write(const Def::String &m, const Def::String &s, Def::Bool p, Def::Bool w, Def::Bool prependTimeAndDate = true);
+
+  };
 
 }
 

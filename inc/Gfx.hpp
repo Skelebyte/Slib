@@ -24,8 +24,12 @@
 #define SLIB_GFX_HPP
 
 #include "Img.hpp"
+#include "Types.hpp"
+#include <vector>
 
 namespace Slib::Gfx {
+
+
 
   enum struct Filter {
     NEAREST = 0,
@@ -47,15 +51,48 @@ namespace Slib::Gfx {
   };
 
   struct Uniform {
+    Uniform() = default;
     Uniform(const Def::StringView n, Def::Uint shader);
     ~Uniform() = default;
 
     const Def::String &Name() const;
     Def::Uint ID() const;
 
+    void Set(Def::Float v);
+    void Set(Def::Int v);
+    void Set(Def::Bool v);
+    void Set(const Types::Color &v);
+    void Set(const Types::Vector3f &v);
+
+    protected:
+      Def::Int id = -1;
+      const Def::String name;
+  };
+
+  struct Shader {
+    Shader() = default;
+    Shader(const Def::StringView n, const Def::StringView f, const Def::StringView v);
+    Shader(const Def::Char *f, const Def::Char *v);
+    ~Shader();
+
+    void Setup(const Def::Char *f, const Def::Char *v);
+    void Clean();
+
+    void Bind();
+
+    bool IsValid() const;
+
+    void AddUniform(const Def::StringView n);
+    Uniform *GetUniform(const Def::StringView n);
+
     protected:
       Def::Uint id;
       const Def::String name;
+      std::vector<Uniform> uniforms;
+
+    private:
+      static bool IsCompileOk(Def::Uint s, const Def::StringView n);
+      static bool IsLinkOk(Def::Uint id);
   };
 
 }

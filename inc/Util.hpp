@@ -51,6 +51,12 @@ namespace Slib::Util {
     static Def::String GetExtension(const Def::StringView p);
   };
 
+  struct Time {
+    static Def::String TimeAsString();
+    static Def::String DateAsString();
+    static Def::String TimeAndDateAsString();
+  };
+
 }
 
 #endif //SLIB_UTIL_HPP

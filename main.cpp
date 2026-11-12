@@ -20,15 +20,15 @@
  * . This notice may not be removed or altered from any source distribution.
  */
 
-#include <iostream>
-
 #include "Slib.hpp"
 SLIB_NAMESPACES()
 
 int main() {
+  Debug::Log("hi mum");
+  Debug::Warning("hi mum");
+  Debug::Error("hi mum");
+  Debug::CheckGL("hi mum");
+  Debug::Fatal("hi mum");
 
-  Vector3f vec(1.0f, 5.0f, -2.0f);
-
-  std::cout<<vec.ToString()<<std::endl;
-
+  return 0;
 }

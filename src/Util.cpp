@@ -23,6 +23,8 @@
 #include "../inc/Util.hpp"
 #include <filesystem>
 #include <fstream>
+#include <chrono>
+#include <format>
 
 namespace Slib::Util {
 
@@ -63,6 +65,21 @@ namespace Slib::Util {
     if (!Exists(p)) return {};
 
     return static_cast<std::filesystem::path>(p).extension().string();
+  }
+
+  Def::String Time::TimeAsString() {
+    const std::chrono::time_point now = std::chrono::system_clock::now();
+    const std::chrono::time_point fixed = std::chrono::floor<std::chrono::duration<long long, std::centi>>(now);
+
+    return std::format("{:%H:%M:%S}", fixed);
+  }
+  Def::String Time::DateAsString() {
+    const std::chrono::time_point now = std::chrono::system_clock::now();
+
+    return std::format("{:%d/%m/%Y}", now);
+  }
+  Def::String Time::TimeAndDateAsString() {
+    return TimeAsString() + ", " + DateAsString();
   }
 
 }

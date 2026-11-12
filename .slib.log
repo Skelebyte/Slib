@@ -1,0 +1,9 @@
+#### Slib Log File ####
+20:18:25.19, 12/11/2026 [ DEBUG::LOG ] : hi mum
+20:18:25.19, 12/11/2026 [ DEBUG::WARNING ] : hi mum
+20:18:25.19, 12/11/2026 [ DEBUG::ERROR ] : hi mum
+20:18:25.19, 12/11/2026 [ DEBUG::FATAL ] : hi mum
+20:18:25.19, 12/11/2026 [ DEBUG::EXIT ] : Code: -1
+20:18:56.15, 12/11/2026 [ DEBUG::LOG ] : hi mum
+20:18:56.15, 12/11/2026 [ DEBUG::WARNING ] : hi mum
+20:18:56.15, 12/11/2026 [ DEBUG::ERROR ] : hi mum

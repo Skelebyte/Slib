@@ -2,6 +2,7 @@
 #define SLIB_CPP
 
 #include "src/dep/glad/src/gl.c"
+#include "src/Dbg.cpp"
 #include "src/Def.cpp"
 #include "src/Gfx.cpp"
 #include "src/Img.cpp"

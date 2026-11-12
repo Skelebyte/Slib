@@ -72,6 +72,60 @@ namespace Slib::Types {
     Def::Float data[4] = {0.0f, 0.0f, 0.0f, 1.0f};
   };
 
+  template <typename T>
+  struct Pointer {
+    Pointer() = default;
+    Pointer(T *t, const Def::Int s) {
+      ptr = t;
+      amount = s;
+    }
+    Pointer(const Def::Int s) {
+      Setup(s);
+    }
+    Pointer(const Pointer<T> &other) = delete;
+    Pointer(Pointer<T> &&from) {
+      Clean();
+
+      ptr = from.ptr;
+      amount = from.amount;
+
+      from.ptr = nullptr;
+      from.amount = 0;
+    }
+    ~Pointer() {
+      Clean();
+    }
+    void Setup(const Def::Int s = 1) {
+      if (s <= 0) {
+        amount = 1;
+        ptr = new T;
+      } else {
+        amount = s;
+        ptr = new T[s];
+      }
+    }
+    void Clean() {
+      if (!ptr) return;
+
+      if(amount > 1) {
+        delete[] ptr;
+        amount = 0;
+      } else {
+        delete ptr;
+        amount = 0;
+      }
+
+      ptr = nullptr;
+    }
+    bool IsValid() const {
+      return !(ptr == nullptr);
+    }
+
+    protected:
+      Def::Int amount;
+      T *ptr;
+  };
+
   template <typename T, Def::Uint S>
   struct Vector : Util::IToString {
     Vector() = default;
