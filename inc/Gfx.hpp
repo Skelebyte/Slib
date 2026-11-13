@@ -38,7 +38,7 @@ namespace Slib::Gfx {
 
   struct Texture : Img::Image {
     Texture() = default;
-    Texture(const Def::StringView p, const Filter &f);
+    Texture(Def::StringView p, const Filter &f);
     ~Texture();
 
     void Setup(const Filter &f);
@@ -47,16 +47,16 @@ namespace Slib::Gfx {
 
     protected:
       void Clean();
-      Def::Uint id;
+      Def::Uint id = 0 ;
   };
 
   struct Uniform {
     Uniform() = default;
-    Uniform(const Def::StringView n, Def::Uint shader);
+    Uniform(Def::StringView n, Def::Uint shader);
     ~Uniform() = default;
 
-    const Def::String &Name() const;
-    Def::Uint ID() const;
+    [[nodiscard]] const Def::String &GetName() const;
+    [[nodiscard]] Def::Uint GetID() const;
 
     void Set(Def::Float v);
     void Set(Def::Int v);
@@ -71,7 +71,7 @@ namespace Slib::Gfx {
 
   struct Shader {
     Shader() = default;
-    Shader(const Def::StringView n, const Def::StringView f, const Def::StringView v);
+    Shader(Def::StringView n, Def::StringView f, Def::StringView v);
     Shader(const Def::Char *f, const Def::Char *v);
     ~Shader();
 
@@ -80,18 +80,18 @@ namespace Slib::Gfx {
 
     void Bind();
 
-    bool IsValid() const;
+    [[nodiscard]] bool IsValid() const;
 
-    void AddUniform(const Def::StringView n);
-    Uniform *GetUniform(const Def::StringView n);
+    void AddUniform(Def::StringView n);
+    Uniform *GetUniform(Def::StringView n);
 
     protected:
-      Def::Uint id;
+      Def::Uint id = 0;
       const Def::String name;
       std::vector<Uniform> uniforms;
 
     private:
-      static bool IsCompileOk(Def::Uint s, const Def::StringView n);
+      static bool IsCompileOk(Def::Uint s, Def::StringView n);
       static bool IsLinkOk(Def::Uint id);
   };
 

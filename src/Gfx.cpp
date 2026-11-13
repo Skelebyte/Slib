@@ -100,10 +100,10 @@ namespace Slib::Gfx {
     id = glGetUniformLocation(shader, name.c_str());
     Dbg::Debug::CheckGL("glGetUniformLocation(" + name + ")");
   }
-  const Def::String &Uniform::Name() const {
+  const Def::String &Uniform::GetName() const {
     return name;
   }
-  Def::Uint Uniform::ID() const {
+  Def::Uint Uniform::GetID() const {
     return id;
   }
   void Uniform::Set(const Def::Float v) {
@@ -211,14 +211,14 @@ namespace Slib::Gfx {
   }
   void Shader::AddUniform(const Def::StringView n) {
     for(Def::Size i = 0; i < uniforms.size(); i++) {
-      if (uniforms[i].Name() == n) return;
+      if (uniforms[i].GetName() == n) return;
     }
 
     uniforms.emplace_back(n, id);
   }
   Uniform *Shader::GetUniform(const Def::StringView n) {
     for(Def::Size i = 0; i < uniforms.size(); i++) {
-      if(uniforms[i].Name() == n) return &uniforms[i];
+      if(uniforms[i].GetName() == n) return &uniforms[i];
     }
 
     return nullptr;
